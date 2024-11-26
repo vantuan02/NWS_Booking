@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
+use App\Repositories\Repository\HotelRepository;
 
 class HotelController extends Controller
 {
+
+    protected $hotelRepository;
+
+    public function __construct(HotelRepository $hotelRepository)
+    {
+        $this->hotelRepository = $hotelRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $hotels = $this->hotelRepository->all();
+        
+        return view('hotels.index', compact('hotels'));
     }
 
     /**
