@@ -1,6 +1,18 @@
 @extends('layout.admin.master')
 @section('content')
-    <button class="btn btn-primary"><a href="" style="color: #fff;">Create</a></button>
+    <section class="content-header">
+        <h1>
+            Hotels
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href=""><i class="fa fa-dashboard"></i> Home | </a></li>
+            <li class="active"> Hotels</li>
+        </ol>
+    </section>
+    <hr>
+    <button class="btn btn-primary"><a href="{{ route('hotels.create') }}" style="color: #fff;"><i
+                class="bi bi-building-fill-add"></i> Create</a></button>
+    <hr>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -16,20 +28,30 @@
                 <tr>
                     <td>{{ $hotel->id }}</td>
                     <td>{{ $hotel->name }}</td>
-                    <td>{{ $hotel->description }}</td>
+                    <td>
+                        @if ($hotel->hotelImages->count() > 0)
+                            <img src="{{ asset($hotel->hotelImages->first()->image_url) }}" alt="{{ $hotel->name }}"
+                                class="img-thumbnail" width="100">
+                        @else
+                            <img src="{{ asset('default_image.jpg') }}" alt="No Image" class="img-thumbnail" width="100">
+                        @endif
+                    </td>
                     <td>{{ $hotel->address }}</td>
                     <td>
-                        <a href="{{route('hotels.show', $hotel->id)}}">
-                            {!! Form::button('Edit', ['class' => 'btn btn-success']) !!}
-                        </a>
+                        <div style="display: flex; gap: 5px;">
+                            <a href="{{ route('hotels.edit', $hotel->id) }}" class="btn btn-success">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['hotels.destroy', $hotel->id]]) !!}
+                            {!! Form::button('<i class="fa fa-trash"></i>', [
+                                'type' => 'submit',
+                                'class' => 'btn btn-danger',
+                                'onclick' => "return confirm('Bạn có muốn xóa không?')",
+                            ]) !!}
+                            {!! Form::close() !!}
+
+                        </div>
                     </td>
-                    <td>
-                        {!! Form::open(['method' => 'DELETE', 'route' => ['hotels.destroy', $hotel->id]]) !!}
-                        {!! Form::submit('Delete', [
-                            'class' => 'btn btn-danger',
-                            'onclick' => "return confirm('Bạn có muốn xóa không?')",
-                        ]) !!}
-                        {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach

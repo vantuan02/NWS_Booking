@@ -18,9 +18,9 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->all();
     }
 
-    public function find($id)
+    public function findOrFail($id)
     {
-        return $this->model->find($id);
+        return $this->model->findOrFail($id);
     }
 
     public function create(array $data)
