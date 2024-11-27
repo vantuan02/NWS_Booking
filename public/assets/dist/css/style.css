@@ -1,0 +1,44 @@
+/* Container chứa các ảnh */
+.image-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Đảm bảo ảnh không xuống dòng mà lướt ngang */
+    gap: 10px;
+    /* Khoảng cách giữa các ảnh */
+    overflow-x: auto;
+    /* Cho phép cuộn ngang khi có quá nhiều ảnh */
+    padding: 10px 0;
+    max-width: 100%;
+    /* Giới hạn chiều rộng tối đa */
+}
+
+/* Cải thiện kiểu dáng của các ảnh */
+.img-preview {
+    width: 150px;
+    /* Cố định chiều rộng ảnh */
+    height: 150px;
+    /* Cố định chiều cao ảnh */
+    object-fit: cover;
+    /* Cắt ảnh để vừa với khung mà không bị méo */
+    border-radius: 8px;
+    /* Bo tròn các góc của ảnh */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Thêm bóng nhẹ cho ảnh */
+    transition: transform 0.3s ease-in-out;
+    /* Thêm hiệu ứng khi hover vào ảnh */
+}
+
+/* Hiệu ứng khi hover lên ảnh */
+.img-preview:hover {
+    transform: scale(1.05);
+    /* Phóng to ảnh khi hover */
+    cursor: pointer;
+}
+
+/* Hiển thị thông báo khi không có ảnh */
+.no-images {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}

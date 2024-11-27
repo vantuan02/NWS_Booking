@@ -11,7 +11,7 @@ class UpdateHotelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class UpdateHotelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'address' => 'required|string|max:500',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Tên khách sạn là bắt buộc.',
+            'name.string' => 'Tên khách sạn phải là chuỗi ký tự.',
+            'name.max' => 'Tên khách sạn không được vượt quá 255 ký tự.',
+            'description.string' => 'Mô tả phải là chuỗi ký tự.',
+            'address.required' => 'Địa chỉ là bắt buộc.',
+            'address.string' => 'Địa chỉ phải là chuỗi ký tự.',
+            'address.max' => 'Địa chỉ không được vượt quá 500 ký tự.',
         ];
     }
 }

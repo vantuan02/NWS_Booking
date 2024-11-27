@@ -6,5 +6,7 @@ use App\Repositories\BaseRepositoryInterface;
 
 interface HotelRepositoryInterface extends BaseRepositoryInterface {
 
+    public function findOrFailWithImages($id);
+
 }
 ?>
