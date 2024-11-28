@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RoomStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +18,12 @@ class Room extends Model
         'description',
         'price',
         'customer_limit',
-        'status'
+        'status',
+        'detail'
+    ];
+
+    protected $casts = [
+        'status' => RoomStatus::class,
     ];
 
     public function hotel()

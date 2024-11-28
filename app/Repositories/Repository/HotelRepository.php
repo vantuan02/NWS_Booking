@@ -11,9 +11,7 @@ class HotelRepository extends BaseRepository
     {
         parent::__construct($hotel);
     }
-    
-    public function findOrFailWithImages($id)
-    {
-        return $this->model->with('hotelImages')->findOrFail($id);
+    public function getName(){
+        return $this->model->pluck('name', 'id');
     }
 }
