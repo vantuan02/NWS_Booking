@@ -53,7 +53,7 @@ class HotelController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $newName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                $linkStorage = 'storage/app/public/hotels/';
+                $linkStorage = 'storage/app/public/images/';
                 $image->move(public_path($linkStorage), $newName);
                 $linkImage = $linkStorage . $newName;
 
@@ -69,9 +69,10 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Hotel $hotel)
+    public function show(string $id)
     {
-        //
+        $hotel = $this->hotelRepository->findOrFail($id);
+        return view('hotels.show', compact('hotel'));
     }
 
     /**
@@ -79,7 +80,7 @@ class HotelController extends Controller
      */
     public function edit(string $id)
     {
-        $hotel = $this->hotelRepository->findOrFailWithImages($id);
+        $hotel = $this->hotelRepository->findOrFail($id);
         return view('hotels.edit', compact('hotel'));
     }
 

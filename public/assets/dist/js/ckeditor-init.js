@@ -5,7 +5,7 @@ ClassicEditor
         console.error(error);
     });
 ClassicEditor
-    .create(document.querySelector('#content'))
+    .create(document.querySelector('#detail-des'))
     .catch(error => {
         console.error(error);
     });
