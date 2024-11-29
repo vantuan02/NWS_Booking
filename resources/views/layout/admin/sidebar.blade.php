@@ -26,6 +26,14 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('payment_methods.index')}}" class="nav-link">
+                    <i class="bi bi-credit-card"></i>
+                    <p>
+                        Payment Methods Manage
+                    </p>
+                </a>
+            </li>
             <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
             </form>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AmenityRequest;
-use App\Models\Amenity;
 use App\Repositories\Repository\AmenityRepository;
 
 class AmenityController extends Controller
@@ -83,7 +82,34 @@ class AmenityController extends Controller
      */
     public function update(AmenityRequest $request, string $id)
     {
-        
+        $amenity = $this->amenityRepository->findOrFail($id);
+        if (!$amenity) {
+            return redirect()->route('amenities.index')->with('error', 'Tiện ích không tồn tại.');
+        }
+
+        $imagePath = $amenity->image; 
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $linkStorage = 'storage/images/';
+
+            if ($imagePath && file_exists(public_path($imagePath))) {
+                unlink(public_path($imagePath));
+            }
+
+            $image->move(public_path($linkStorage), $newName);
+            $imagePath = $linkStorage . $newName;
+        }
+
+        $this->amenityRepository->update($id, [
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->route('amenities.index')->with('success', 'Cập nhật thành công.');
     }
 
     /**
@@ -92,8 +118,7 @@ class AmenityController extends Controller
     public function destroy(string $id)
     {
         $this->amenityRepository->delete($id);
-        
-        return back()->with('success', 'Đã xóa thành công.');
 
+        return back()->with('success', 'Đã xóa thành công.');
     }
 }
