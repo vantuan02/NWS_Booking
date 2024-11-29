@@ -11,7 +11,7 @@ class UpdatePaymentMethodRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdatePaymentMethodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name payment method is required.',
+            'name.string' => 'Name payment method must be string.',
+            'name.max' => 'Name payment method max 255.',
         ];
     }
 }

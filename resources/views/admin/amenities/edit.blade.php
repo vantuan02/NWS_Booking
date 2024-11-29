@@ -54,6 +54,6 @@
             @enderror
         </div>
     </div>
-    {!! Form::submit('Add', ['class' => 'btn btn-success']) !!}
+    {!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
     {!! Form::close() !!}
 @endsection
