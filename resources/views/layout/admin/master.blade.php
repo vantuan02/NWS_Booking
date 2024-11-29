@@ -130,6 +130,8 @@
     
     <script src="{{ asset('assets/dist/js/ckeditor-init.js') }}"></script>
 
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
     @include('layout.admin.succsess')
     @include('layout.admin.errors-import')

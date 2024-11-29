@@ -25,7 +25,6 @@ class RoomController extends Controller
         $this->roomImageRepository = $roomImageRepository;
 
         $this->hotelRepository = $hotelRepository;
-
     }
 
     /**
@@ -35,7 +34,7 @@ class RoomController extends Controller
     {
         $rooms = $this->roomRepository->all();
 
-        return view('rooms.index', compact('rooms'));
+        return view('admin.rooms.index', compact('rooms'));
     }
 
     /**
@@ -44,15 +43,15 @@ class RoomController extends Controller
     public function create()
     {
         $hotels = $this->hotelRepository->getName();
-        
+
         $roomStatuses = RoomStatus::getValues();
         $statusOptions = [];
-    
+
         foreach ($roomStatuses as $status) {
             $statusOptions[$status] = RoomStatus::getDescription($status);
         }
-    
-        return view('rooms.create', compact('hotels','statusOptions'));
+
+        return view('admin.rooms.create', compact('hotels', 'statusOptions'));
     }
 
     /**
@@ -93,7 +92,7 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = $this->roomRepository->findOrFail($id);
-        return view('rooms.show', compact('room'));
+        return view('admin.rooms.show', compact('room'));
     }
 
     /**
@@ -104,15 +103,15 @@ class RoomController extends Controller
         $room = $this->roomRepository->findOrFail($id);
 
         $hotels = $this->hotelRepository->getName();
-        
+
         $roomStatuses = RoomStatus::getValues();
         $statusOptions = [];
-    
+
         foreach ($roomStatuses as $status) {
             $statusOptions[$status] = RoomStatus::getDescription($status);
         }
 
-        return view('rooms.edit', compact('room','hotels', 'statusOptions'));        
+        return view('admin.rooms.edit', compact('room', 'hotels', 'statusOptions'));
     }
 
     /**

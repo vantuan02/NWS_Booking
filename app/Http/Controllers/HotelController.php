@@ -28,7 +28,7 @@ class HotelController extends Controller
     {
         $hotels = $this->hotelRepository->all();
 
-        return view('hotels.index', compact('hotels'));
+        return view('admin.hotels.index', compact('hotels'));
     }
 
     /**
@@ -36,7 +36,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+        return view('admin.hotels.create');
     }
 
     /**
@@ -72,7 +72,7 @@ class HotelController extends Controller
     public function show(string $id)
     {
         $hotel = $this->hotelRepository->findOrFail($id);
-        return view('hotels.show', compact('hotel'));
+        return view('admin.hotels.show', compact('hotel'));
     }
 
     /**
@@ -81,7 +81,7 @@ class HotelController extends Controller
     public function edit(string $id)
     {
         $hotel = $this->hotelRepository->findOrFail($id);
-        return view('hotels.edit', compact('hotel'));
+        return view('admin.hotels.edit', compact('hotel'));
     }
 
     /**

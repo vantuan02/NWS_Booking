@@ -6,7 +6,7 @@
                 <a href="{{ route('hotels.index') }}" class="nav-link">
                     <i class="bi bi-building-gear"></i>
                     <p>
-                        Hotel Manage
+                        Hotels Manage
                     </p>
                 </a>
             </li>
@@ -14,7 +14,15 @@
                 <a href="{{route('rooms.index')}}" class="nav-link">
                     <i class="bi bi-door-open"></i>
                     <p>
-                        Room Manage
+                        Rooms Manage
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('amenities.index')}}" class="nav-link">
+                    <i class="bi bi-display"></i>
+                    <p>
+                        Amenities Manage
                     </p>
                 </a>
             </li>
