@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Room</title>
+        <title>Update Room</title>
     </head>
 
     <body>
@@ -105,7 +105,47 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('views[]', 'Views') !!}
+                    <div>
+                        @foreach ($views as $id => $name)
+                            <div class="form-check">
+                                {!! Form::checkbox('views[]', $id, in_array($id, $room->views->pluck('id')->toArray()), [
+                                    'class' => 'form-check-input',
+                                    'id' => 'view-' . $id,
+                                ]) !!}
+                                {!! Form::label('view-' . $id, $name, ['class' => 'form-check-label']) !!}
+                            </div>
+                        @endforeach
+                    </div>
+                    @error('views')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('amenities[]', 'Amenities') !!}
+                    <div>
+                        @foreach ($amenities as $id => $name)
+                            <div class="form-check">
+                                {!! Form::checkbox('amenities[]', $id, in_array($id, $room->amenities->pluck('id')->toArray()), [
+                                    'class' => 'form-check-input',
+                                    'id' => 'amenity-' . $id,
+                                ]) !!}
+                                {!! Form::label('amenity-' . $id, $name, ['class' => 'form-check-label']) !!}
+                            </div>
+                        @endforeach
+                    </div>
+                    @error('amenities')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
+        </div>
         {!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
         {!! Form::close() !!}
     </body>

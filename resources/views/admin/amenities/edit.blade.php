@@ -3,10 +3,10 @@
     <section>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create amenity</title>
+        <title>Update amenity</title>
     </section>
     <hr>
-    <H2>Create new amenity</H2>
+    <H2>Update amenity</H2>
     {!! Form::open(['method' => 'PUT', 'route' => ['amenities.update',$amenity->id], 'enctype' => 'multipart/form-data']) !!}
     <div class="row">
         <div class="col-md-6">

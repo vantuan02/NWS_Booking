@@ -24,7 +24,7 @@ class AmenityRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|max:2048',
-            'price' => 'required|numeric|min:0',
+            'price' => 'nullable|numeric|min:0',
             'description' => 'nullable|string|max:1000',
         ];
     }
@@ -36,7 +36,6 @@ class AmenityRequest extends FormRequest
             'name.max' => 'Tên tiện ích không được vượt quá 255 ký tự.',
             'image.image' => 'Tệp được tải lên phải là hình ảnh.',
             'image.max' => 'Kích thước ảnh không được vượt quá 2MB.',
-            'price.required' => 'Vui lòng nhập giá tiện ích.',
             'price.numeric' => 'Giá tiện ích phải là một số.',
             'price.min' => 'Giá tiện ích không được nhỏ hơn 0.',
             'description.string' => 'Mô tả phải là chuỗi ký tự.',

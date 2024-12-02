@@ -2,14 +2,14 @@
 
 namespace App\Repositories\Repository;
 
-use App\Models\Amenity;
+use App\Models\View;
 use App\Repositories\BaseRepository;
 
-class AmenityRepository extends BaseRepository
+class ViewRepository extends BaseRepository
 {
-    public function __construct(Amenity $amenity)
+    public function __construct(View $view)
     {
-        parent::__construct($amenity);
+        parent::__construct($view);
     }
 
     public function getName(){

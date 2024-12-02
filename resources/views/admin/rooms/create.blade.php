@@ -97,6 +97,47 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('views[]', 'Views') !!}
+                    <div>
+                        @foreach ($views as $id => $name)
+                            <div class="form-check">
+                                {!! Form::checkbox('views[]', $id, in_array($id, old('views', [])), [
+                                    'class' => 'form-check-input',
+                                    'id' => 'view-' . $id,
+                                ]) !!}
+                                {!! Form::label('view-' . $id, $name, ['class' => 'form-check-label']) !!}
+                            </div>
+                        @endforeach
+                    </div>
+                    @error('views')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('amenities[]', 'Amenities') !!}
+                    <div>
+                        @foreach ($amenities as $id => $name)
+                            <div class="form-check">
+                                {!! Form::checkbox('amenities[]', $id, in_array($id, old('amenities', [])), [
+                                    'class' => 'form-check-input',
+                                    'id' => 'amenity-' . $id,
+                                ]) !!}
+                                {!! Form::label('amenity-' . $id, $name, ['class' => 'form-check-label']) !!}
+                            </div>
+                        @endforeach
+                    </div>
+                    @error('amenities')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
+        </div>
 
         {!! Form::submit('Add', ['class' => 'btn btn-success']) !!}
         {!! Form::close() !!}
