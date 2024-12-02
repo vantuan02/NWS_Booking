@@ -11,6 +11,12 @@ class View extends Model
     /** @use HasFactory<\Database\Factories\ViewFactory> */
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'image'
+    ];
+
     public function rooms()
     {
         return $this->belongsToMany(Room::class, 'room_views');

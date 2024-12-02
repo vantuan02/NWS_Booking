@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('rooms.index')}}" class="nav-link">
+                <a href="{{ route('rooms.index') }}" class="nav-link">
                     <i class="bi bi-door-open"></i>
                     <p>
                         Rooms Manage
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('amenities.index')}}" class="nav-link">
+                <a href="{{ route('amenities.index') }}" class="nav-link">
                     <i class="bi bi-display"></i>
                     <p>
                         Amenities Manage
@@ -27,10 +27,18 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('payment_methods.index')}}" class="nav-link">
+                <a href="{{ route('payment_methods.index') }}" class="nav-link">
                     <i class="bi bi-credit-card"></i>
                     <p>
                         Payment Methods Manage
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('views.index') }}" class="nav-link">
+                    <i class="bi bi-credit-card"></i>
+                    <p>
+                        Views manage
                     </p>
                 </a>
             </li>

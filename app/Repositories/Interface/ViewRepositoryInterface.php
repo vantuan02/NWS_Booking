@@ -4,7 +4,9 @@ namespace App\Repositories\Interface;
 
 use App\Repositories\BaseRepositoryInterface;
 
-interface AmenityRepositoryInterface extends BaseRepositoryInterface {
+interface ViewRepositoryInterface extends BaseRepositoryInterface {
+
     public function getName();
+    
 }
 ?>

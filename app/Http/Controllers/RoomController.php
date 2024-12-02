@@ -6,9 +6,11 @@ use App\Enums\RoomStatus;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
+use App\Repositories\Repository\AmenityRepository;
 use App\Repositories\Repository\HotelRepository;
 use App\Repositories\Repository\RoomImageRepository;
 use App\Repositories\Repository\RoomRepository;
+use App\Repositories\Repository\ViewRepository;
 
 class RoomController extends Controller
 {
@@ -18,13 +20,28 @@ class RoomController extends Controller
 
     protected $hotelRepository;
 
-    public function __construct(RoomRepository $roomRepository, RoomImageRepository $roomImageRepository, HotelRepository $hotelRepository)
-    {
+    protected $viewRepository;
+
+    protected $amenityRepository;
+
+
+    public function __construct(
+        RoomRepository $roomRepository,
+        RoomImageRepository $roomImageRepository,
+        HotelRepository $hotelRepository,
+        ViewRepository $viewRepository,
+        AmenityRepository $amenityRepository,
+
+    ) {
         $this->roomRepository = $roomRepository;
 
         $this->roomImageRepository = $roomImageRepository;
 
         $this->hotelRepository = $hotelRepository;
+
+        $this->viewRepository = $viewRepository;
+
+        $this->amenityRepository = $amenityRepository;
     }
 
     /**
@@ -45,13 +62,18 @@ class RoomController extends Controller
         $hotels = $this->hotelRepository->getName();
 
         $roomStatuses = RoomStatus::getValues();
+
         $statusOptions = [];
 
         foreach ($roomStatuses as $status) {
             $statusOptions[$status] = RoomStatus::getDescription($status);
         }
 
-        return view('admin.rooms.create', compact('hotels', 'statusOptions'));
+        $views = $this->viewRepository->getName();
+
+        $amenities = $this->amenityRepository->getName();
+
+        return view('admin.rooms.create', compact('hotels', 'statusOptions', 'views', 'amenities'));
     }
 
     /**
@@ -83,6 +105,10 @@ class RoomController extends Controller
                 ]);
             }
         }
+
+        $room->views()->attach($request->views);
+        $room->amenities()->attach($request->amenities);
+
         return redirect()->route('rooms.index')->with('success', 'Đã tạo thành công.');
     }
 
@@ -111,7 +137,11 @@ class RoomController extends Controller
             $statusOptions[$status] = RoomStatus::getDescription($status);
         }
 
-        return view('admin.rooms.edit', compact('room', 'hotels', 'statusOptions'));
+        $views = $this->viewRepository->getName();
+
+        $amenities = $this->amenityRepository->getName();
+
+        return view('admin.rooms.edit', compact('room', 'hotels', 'statusOptions', 'views', 'amenities'));
     }
 
     /**
@@ -120,6 +150,10 @@ class RoomController extends Controller
     public function update(UpdateRoomRequest $request, string $id)
     {
         $room = $this->roomRepository->update($id, $request->all());
+
+        $room->views()->sync($request->input('views', []));
+
+        $room->amenities()->sync($request->input('amenities', []));
 
         if ($request->hasFile('images')) {
 
