@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
 use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
 use App\Repositories\Repository\HotelImageRepository;

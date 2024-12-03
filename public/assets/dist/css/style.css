@@ -174,3 +174,9 @@ h3 {
     /* Chiều cao của một dòng */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 }
+
+.amenity-img {
+    width: 30px; /* Thay đổi kích thước ảnh theo ý muốn */
+    height: auto; /* Giữ tỷ lệ ảnh đúng */
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh và tên */
+}

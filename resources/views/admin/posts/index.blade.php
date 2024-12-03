@@ -2,46 +2,51 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Payment Methods
+            Posts
         </h1>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i> Home | </a></li>
-            <li class="active"> Payment Methods</li>
+            <li class="active"> Posts</li>
         </ol>
     </section>
     <hr>
-    <button class="btn btn-primary"><a href="{{ route('payment_methods.create') }}" style="color: #fff;">
-            <i class="bi bi-credit-card"></i>
-            Create</a></button>
+    <button class="btn btn-primary"><a href="{{ route('posts.create') }}" style="color: #fff;">
+            <i class="bi bi-newspaper"> </i> Create</a></button>
     <hr>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($payMethods as $method)
+            @foreach ($posts as $post)
                 <tr>
-                    <td>{{ $method->id }}</td>
-                    <td>{{ $method->name }}</td>
+                    <td>{{ $post->id }}</td>
+                    <td>{{ $post->title }}</td>
+                    <td>
+                        <img src="{{$post->image}}" alt="{{ $post->title }}"
+                            class="img-thumbnail" width="100">
+                    </td>
                     <td>
                         <div style="display: flex; gap: 5px;">
-                            <a href="{{ route('payment_methods.edit', $method->id) }}" class="btn btn-success">
+                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['payment_methods.destroy', $method->id]]) !!}
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id]]) !!}
                             {!! Form::button('<i class="fa fa-trash"></i>', [
                                 'type' => 'submit',
                                 'class' => 'btn btn-danger',
                                 'onclick' => "return confirm('Bạn có muốn xóa không?')",
                             ]) !!}
                             {!! Form::close() !!}
-
                         </div>
-                    </td>
                     </td>
                 </tr>
             @endforeach

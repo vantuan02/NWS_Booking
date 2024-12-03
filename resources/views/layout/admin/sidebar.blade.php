@@ -36,9 +36,33 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('views.index') }}" class="nav-link">
-                    <i class="bi bi-credit-card"></i>
+                    <i class="bi bi-image-alt"></i>
                     <p>
                         Views manage
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('posts.index') }}" class="nav-link">
+                    <i class="bi bi-newspaper"></i>
+                    <p>
+                        Posts manage
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('views.index') }}" class="nav-link">
+                    <i class="bi bi-card-list"></i>
+                    <p>
+                        Bookings manage
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('views.index') }}" class="nav-link">
+                    <i class="bi bi-card-checklist"></i>
+                    <p>
+                        Payments manage
                     </p>
                 </a>
             </li>

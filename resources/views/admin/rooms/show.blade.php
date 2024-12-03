@@ -30,7 +30,21 @@
                 <div>
                     <p><strong>Số người ở :</strong> {{ $room->customer_limit }}</p>
                     <p><strong>Giá 1 đêm :</strong> {{ number_format($room->price) }}</p>
-                    <p><strong>Giá 1 đêm :</strong> {{ App\Enums\RoomStatus::getDescription($room->status) }}</p>
+                    <p><strong>Trạng thái :</strong> {{ App\Enums\RoomStatus::getDescription($room->status) }}</p>
+                    <div class="amenities">
+                        <p><strong>Tiện ích :</strong></p>
+                        <div class="row">
+                            @foreach ($room->amenities as $amenity)
+                                <div class="col-md-3">
+                                    <div class="amenity-item text-center">
+                                        <img src="{{$amenity->image}}"
+                                            alt="{{ $amenity->name }}" class="img-fluid amenity-img">
+                                        <p>{{ $amenity->name }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <p><strong>Description:</strong>
                         <span id="hotel-description-short">{!! nl2br($room->description) !!}</span>
                     </p>
@@ -45,7 +59,7 @@
         <hr>
         <button class="btn btn-primary">
             <a href="{{ route('rooms.index') }}" style="color: #fff">
-            Back
+                Back
             </a>
         </button>
     </div>

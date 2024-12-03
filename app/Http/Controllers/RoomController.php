@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enums\RoomStatus;
-use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 use App\Repositories\Repository\AmenityRepository;
