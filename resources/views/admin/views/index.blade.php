@@ -11,7 +11,7 @@
     </section>
     <hr>
     <button class="btn btn-primary"><a href="{{ route('views.create') }}" style="color: #fff;">
-            <i class="bi bi-door-open"></i>Create</a></button>
+            <i class="bi bi-image-alt"></i> Create </a></button>
     <hr>
     <table class="table table-striped">
         <thead>

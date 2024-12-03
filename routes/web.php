@@ -3,6 +3,7 @@
 use App\Http\Controllers\AmenityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::resource('amenities', AmenityController::class );
 Route::resource('payment_methods', PaymentMethodController::class );
 
 Route::resource('views', ViewController::class );
+
+Route::resource('posts', PostController::class );
+
 
 
 
