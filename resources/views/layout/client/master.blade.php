@@ -20,6 +20,8 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     {{-- client.css --}}
     <link rel="stylesheet" href="{{ asset('assets/dist/css/client.css') }}">
+    {{-- swiper --}}
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     @stack('styles')
 </head>
 
@@ -32,7 +34,8 @@
 
     {{-- Client.js --}}
     <script src="{{ asset('assets/dist/js/client.js') }}"></script>
-
+    {{-- swiper --}}
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         $.ajaxSetup({
             headers: {

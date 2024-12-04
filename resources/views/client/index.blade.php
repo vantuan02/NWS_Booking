@@ -4,13 +4,30 @@
         <div class="hero-banner">
             <div class="banner-content">
                 <h1>Luxury Resort</h1>
+                @foreach($rooms as $room)
+                <div class="card-container">
+                    <div class="text">
+                        <h2>{{$room->name}}</h2>
+                        <p>{{number_format($room->price)}}/night</p>
+                        <div class="dots">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    @foreach($room->roomImages as $image)
+                    <div class="image">
+                        <img src="{{$image->image_url}}" alt="imgae">
+                    </div>
+                    @endforeach
+                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <section class="featured-section">
         <h1>Best offer of the month</h1>
         <div class="room-grid">
-            <!-- Room Card -->
             @foreach ($hotels as $hotel)
                 <div class="room-card">
                     <div class="room-image">
@@ -32,13 +49,12 @@
                                 @else
                                     <span class="new-price">Liên hệ để biết giá</span>
                                 @endif
-                            </div>  
+                            </div>
                         </div>
                         <button>Book Now <i class="bi bi-arrow-right"> </i></button>
                     </div>
                 </div>
             @endforeach
-            <!-- Add more room cards -->
         </div>
     </section>
 @endsection

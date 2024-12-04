@@ -10,7 +10,7 @@
                 <!-- Email Input -->
                 <div class="form__input-container">
                     {!! Form::label('email', 'Email Address', ['class' => 'form__label']) !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form__input', 'placeholder' => 'Enter your email']) !!}
+                    {!! Form::text('email', old('email'), ['class' => 'form__input', 'placeholder' => 'Enter your email']) !!}
                     @error('email')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

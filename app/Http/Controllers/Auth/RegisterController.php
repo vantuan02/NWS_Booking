@@ -17,7 +17,7 @@ class RegisterController extends Controller
     }
 
     public function index(){
-        return view('auth.client.register');
+        return view('auth.register');
     }
     public function register(RegisterRequest $request){
         try {

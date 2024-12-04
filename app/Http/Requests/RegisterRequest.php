@@ -25,6 +25,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => 'required|min:6|confirmed',
+            'phone' => 'required|max:10|numeric',
         ];
     }
     public function messages(): array
@@ -40,6 +41,11 @@ class RegisterRequest extends FormRequest
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
             'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
+
+            'phone.numeric' => 'Phone must be number.',
+            'phone.required' => 'Phone is required.',
+            'phone.max' => 'Phone must be 10.',
+
         ];
     }
 }
