@@ -1,0 +1,465 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Header */
+.header {
+    background-color: transparent;
+    position: absolute;
+    /* Header không cố định khi tải trang */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: rgb(255, 255, 255);
+    padding: 20px 0;
+    transition: background-color 0.3s ease, position 0.3s ease;
+    /* Thêm hiệu ứng chuyển màu và position */
+}
+
+.header.fixed {
+    position: fixed;
+    /* Header trở nên cố định khi cuộn */
+    background-color: rgba(0, 0, 0, 0.909);
+    /* Màu nền khi cuộn */
+}
+
+.navbar .nav-list a,
+.auth-links a,
+.logo a {
+    color: white;
+}
+
+.header-actions .language-dropdown select {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+}
+
+/* Các style khác giữ nguyên */
+
+
+.logo a {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .nav-list a:hover {
+    color: #72665E;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-banner {
+    margin-top: 0;
+    background-image: url('/storage/app/public/images/test2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    position: relative;
+    /* Banner nằm dưới header */
+}
+
+
+.hero-banner .banner-content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero-banner .banner-content p {
+    font-size: 18px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 40px 20px;
+    font-family: 'Roboto', sans-serif;
+    /* Hoặc 'Open Sans', sans-serif; */
+    font-weight: 400;
+    /* Áp dụng trọng số bình thường (regular) */
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 20px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-socials a {
+    color: #ffffff;
+    font-size: 18px;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+    color: #f0a500;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f0a500;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.featured-section {
+    background-image: url('/storage/app/public/images/background2.jpg');
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 120px 90px;
+    gap: 64px;
+    width: 100%;
+    /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto;
+    /* Căn giữa theo chiều ngang */
+}
+
+/* Room Grid */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Tự động căn cột theo kích thước */
+    gap: 32px;
+    /* Khoảng cách giữa các card */
+    width: 100%;
+    /* Đảm bảo lưới chiếm toàn bộ chiều rộng */
+}
+
+.room-card {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    background-color: #ffffff00;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto;
+    /* Căn giữa theo chiều ngang */
+}
+
+/* Room Image */
+.room-image img {
+    width: 100%;
+    /* Chiều rộng hình ảnh chiếm toàn bộ card */
+    height: 300px;
+    /* Chiều cao cố định */
+    object-fit: cover;
+}
+
+/* Room Content */
+.room-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.room-content h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.room-content p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+/* Price and Rating */
+.price-rating {
+    display: flex;
+    flex-direction: column;
+    /* Đặt giá cũ và giá mới theo chiều dọc */
+    align-items: flex-start;
+    /* Căn lề trái */
+    gap: 4px;
+    /* Khoảng cách giữa giá cũ và giá mới */
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+.new-price-container {
+    display: flex;
+    gap: 4px;
+}
+
+.new-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #72665E;
+    margin: 0;
+}
+
+.per-night {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* Button */
+button {
+    background: #72665E;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    /* Makes the button fully rounded */
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    display: block;
+    /* Makes the button block-level element */
+    text-align: center;
+    margin-left: auto;
+    /* Aligns to the right */
+    margin-right: 0;
+}
+
+button:hover {
+    background: #ab3300;
+}
+
+.room-card h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.rectangle-overlay {
+    position: absolute;
+    width: 100%;
+    /* Phủ toàn bộ chiều ngang */
+    height: 100%;
+    /* Chiều cao cố định, có thể điều chỉnh */
+    left: 0;
+    top: 0;
+
+    /* Nền ảnh */
+    background-image:
+    linear-gradient(180deg, rgba(27, 26, 26, 0.4) 59.12%, #1B1A1A 75.47%),
+        /* Gradient phủ */
+    url('/storage/app/public/images/test2.jpg');
+    /* Ảnh nền */
+    background-size: cover;
+    /* Đảm bảo ảnh phủ toàn bộ vùng */
+    background-position: center;
+    /* Độ mờ */
+    opacity: 5;
+    /* Đảm bảo lớp phủ nằm bên dưới nội dung khác */
+    z-index: -1;
+}
+
+.content {
+    margin-top: 100px;
+    /* Khoảng cách đủ lớn để không dính sát header */
+}
+
+.form_log {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Tiêu đề */
+.form__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Inputs Container */
+.form__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Label */
+.form__label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.form__input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.form__input:focus {
+    border-color: #007bff;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Checkbox */
+.form__checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.form__checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+    cursor: pointer;
+}
+
+.form__checkbox-label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Forgot Password Link */
+.form__forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.form__forgot-link {
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form__forgot-link:hover {
+    color: #72665E;
+}
+
+/* Submit Button */
+.form__action {
+    text-align: center;
+}
+
+.form__button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: #000000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form__button:hover {
+    background: #72665E;
+}
