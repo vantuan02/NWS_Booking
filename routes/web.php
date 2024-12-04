@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AmenityController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\client\ClientController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PostController;
@@ -19,9 +22,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.admin.master');
-});
+Route::get('/', [ClientController::class, 'index'])->name('client.index');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('hotels', HotelController::class );
 
