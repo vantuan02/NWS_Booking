@@ -62,7 +62,7 @@ class HotelController extends Controller
                 ]);
             }
         }
-        return redirect()->route('hotels.index')->with('success', 'Đã tạo thành công.');
+        return redirect()->route('admin.hotels.index')->with('success', 'Đã tạo thành công.');
     }
 
     /**
@@ -113,7 +113,7 @@ class HotelController extends Controller
                 ]);
             }
         }
-        return redirect()->route('hotels.index')->with('success', 'Đã sửa thành công.');
+        return redirect()->route('admin.hotels.index')->with('success', 'Đã sửa thành công.');
     }
 
     /**

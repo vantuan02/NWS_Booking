@@ -34,19 +34,21 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('hotels', HotelController::class );
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+], function () {
 
-Route::resource('rooms', RoomController::class );
+    Route::resource('hotels', HotelController::class);
 
-Route::resource('amenities', AmenityController::class );
+    Route::resource('rooms', RoomController::class);
 
-Route::resource('payment_methods', PaymentMethodController::class );
+    Route::resource('amenities', AmenityController::class);
 
-Route::resource('views', ViewController::class );
+    Route::resource('payment_methods', PaymentMethodController::class);
 
-Route::resource('posts', PostController::class );
+    Route::resource('views', ViewController::class);
 
+    Route::resource('posts', PostController::class);
 
-
-
-
+});

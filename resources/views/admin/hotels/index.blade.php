@@ -1,63 +1,85 @@
-@extends('layout.admin.master')
+@extends('layout.ad.master')
 @section('content')
-    <section class="content-header">
-        <h1>
-            Hotels
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-dashboard"></i> Home | </a></li>
-            <li class="active"> Hotels</li>
-        </ol>
-    </section>
-    <hr>
-    <button class="btn btn-primary"><a href="{{ route('hotels.create') }}" style="color: #fff;"><i
-                class="bi bi-building-fill-add"></i> Create</a></button>
-    <hr>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Address</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($hotels as $hotel)
-                <tr>
-                    <td>{{ $hotel->id }}</td>
-                    <td>{{ $hotel->name }}</td>
-                    <td>
-                        @if ($hotel->hotelImages->count() > 0)
-                            <img src="{{ asset($hotel->hotelImages->first()->image_url) }}" alt="{{ $hotel->name }}"
-                                class="img-thumbnail" width="100">
-                        @else
-                            <img src="{{ asset('default_image.jpg') }}" alt="No Image" class="img-thumbnail" width="100">
-                        @endif
-                    </td>
-                    <td>{{ $hotel->address }}</td>
-                    <td>
-                        <div style="display: flex; gap: 5px;">
-                            <a href="{{ route('hotels.edit', $hotel->id) }}" class="btn btn-success">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a href="{{ route('hotels.show', $hotel->id) }}" class="btn btn-info">
-                                <i class="fa-solid fa-circle-info"></i>
-                            </a>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['hotels.destroy', $hotel->id]]) !!}
-                            {!! Form::button('<i class="fa fa-trash"></i>', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-danger',
-                                'onclick' => "return confirm('Bạn có muốn xóa không?')",
-                            ]) !!}
-                            {!! Form::close() !!}
+    <div class="card card-body">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <div class="d-sm-flex align-items-center justify-space-between">
+                    <h4 class="fw-semibold fs-4 mb-4 mb-md-0 card-title">Hotels</h4>
+                    <nav aria-label="breadcrumb" class="ms-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">
+                                <span class="badge fw-medium fs-2 bg-primary-subtle text-primary">
+                                    Hotels
+                                </span>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-list">
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="d-flex justify-content-between align-items-center gap-6 mb-9">
+                    <button class="btn btn-primary"><a href="{{ route('admin.hotels.create') }}" style="color: #fff;"><i
+                                class="bi bi-building-fill-add"></i> Create</a></button>
+                </div>
+                <div class="table-responsive border rounded">
+                    <table class="table align-middle text-nowrap mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($hotels as $hotel)
+                                <tr>
+                                    <td>{{ $hotel->id }}</td>
+                                    <td>{{ $hotel->name }}</td>
+                                    <td>
+                                        @if ($hotel->hotelImages->count() > 0)
+                                            <img src="{{ asset($hotel->hotelImages->first()->image_url) }}"
+                                                alt="{{ $hotel->name }}" class="img-thumbnail" width="100">
+                                        @else
+                                            <img src="{{ asset('default_image.jpg') }}" alt="No Image" class="img-thumbnail"
+                                                width="100">
+                                        @endif
+                                    </td>
+                                    <td>{{ $hotel->address }}</td>
+                                    <td>
+                                        <div style="display: flex; gap: 5px;">
+                                            <a href="{{ route('admin.hotels.edit', $hotel->id) }}" class="btn btn-success">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="{{ route('admin.hotels.show', $hotel->id) }}" class="btn btn-info">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </a>
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['admin.hotels.destroy', $hotel->id]]) !!}
+                                            {!! Form::button('<i class="bi bi-trash"></i>', [
+                                                'type' => 'submit',
+                                                'class' => 'btn btn-danger',
+                                                'onclick' => "return confirm('Bạn có muốn xóa không?')",
+                                            ]) !!}
+                                            {!! Form::close() !!}
 
-                        </div>
-                    </td>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                                        </div>
+                                    </td>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="d-flex align-items-center justify-content-end py-1">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 @endsection

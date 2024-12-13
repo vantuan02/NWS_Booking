@@ -108,7 +108,7 @@ class RoomController extends Controller
         $room->views()->attach($request->views);
         $room->amenities()->attach($request->amenities);
 
-        return redirect()->route('rooms.index')->with('success', 'Đã tạo thành công.');
+        return redirect()->route('admin.rooms.index')->with('success', 'Đã tạo thành công.');
     }
 
     /**
@@ -177,7 +177,7 @@ class RoomController extends Controller
                 ]);
             }
         }
-        return redirect()->route('rooms.index')->with('success', 'Đã sửa thành công.');
+        return redirect()->route('admin.rooms.index')->with('success', 'Đã sửa thành công.');
     }
 
     /**

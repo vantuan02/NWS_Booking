@@ -1,0 +1,248 @@
+        /* Kiểu cho notification bell */
+        .nav-item .notification {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            min-width: 20px;
+            min-height: 20px;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Hiển thị thông báo khi có đơn hàng mới */
+        .nav-item .notification.active {
+            display: flex;
+            background-color: #dc3545;
+            /* Màu đỏ cho thông báo */
+        }
+
+        /* Tùy chỉnh badge hiển thị số lượng đơn hàng */
+        #orderNotificationCount {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+            padding: 5px;
+            min-width: 20px;
+            min-height: 20px;
+            color: white;
+            text-align: center;
+            line-height: 1;
+        }
+
+        /* Dropdown nội dung */
+        #newOrdersList {
+            max-height: 300px;
+            /* Giới hạn chiều cao */
+            overflow-y: auto;
+            /* Cuộn nếu vượt quá chiều cao */
+        }
+
+        .collapse {
+            display: none;
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+
+        .has-arrow::after {
+            content: "▼";
+            float: right;
+        }
+
+        .has-arrow[aria-expanded="true"]::after {
+            content: "▲";
+        }
+
+        /* Container chứa các ảnh */
+        .image-gallery {
+            display: flex;
+            flex-wrap: nowrap;
+            /* Đảm bảo ảnh không xuống dòng mà lướt ngang */
+            gap: 10px;
+            /* Khoảng cách giữa các ảnh */
+            overflow-x: auto;
+            /* Cho phép cuộn ngang khi có quá nhiều ảnh */
+            padding: 10px 0;
+            max-width: 100%;
+            /* Giới hạn chiều rộng tối đa */
+        }
+
+        /* Cải thiện kiểu dáng của các ảnh */
+        .img-preview {
+            width: 150px;
+            /* Cố định chiều rộng ảnh */
+            height: 150px;
+            /* Cố định chiều cao ảnh */
+            object-fit: cover;
+            /* Cắt ảnh để vừa với khung mà không bị méo */
+            border-radius: 8px;
+            /* Bo tròn các góc của ảnh */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Thêm bóng nhẹ cho ảnh */
+            transition: transform 0.3s ease-in-out;
+            /* Thêm hiệu ứng khi hover vào ảnh */
+        }
+
+        /* Hiệu ứng khi hover lên ảnh */
+        .img-preview:hover {
+            transform: scale(1.05);
+            /* Phóng to ảnh khi hover */
+            cursor: pointer;
+        }
+
+        /* Hiển thị thông báo khi không có ảnh */
+        .no-images {
+            color: #888;
+            font-style: italic;
+            text-align: center;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2,
+        h3 {
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            background: none;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb .active {
+            color: #0073aa;
+        }
+
+        .content-header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .hotel-info,
+        .review-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hotel-info img {
+            max-width: 50%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .hotel-info p,
+        .hotel-info h4 {
+            margin-bottom: 8px;
+            color: #555;
+            font-family: Arial, sans-serif;
+        }
+
+        .hotel-info h4 {
+            font-weight: bold;
+        }
+
+        .reviews-section {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .review-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .review {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .review p {
+            margin: 0 0 10px;
+            color: #555;
+        }
+
+        .show-more-link {
+            color: #0073aa;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .hotel-images-grid {
+            display: flex;
+            overflow-x: scroll;
+            /* Enable horizontal scroll */
+            white-space: nowrap;
+            /* Prevent images from wrapping */
+            gap: 10px;
+        }
+
+        .hotel-images-grid img {
+            max-width: 100px;
+            /* Set desired width for thumbnails */
+            height: auto;
+            /* Maintain aspect ratio */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        #hotel-description-short {
+            max-height: 4.5em;
+            /* Chiều cao tối đa tương đương 3 dòng (mỗi dòng 1.5em) */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            /* Đảm bảo nội dung xuống dòng */
+        }
+
+        #hotel-description-short {
+            position: relative;
+            max-height: 4.5em;
+            /* Tương đương 3 dòng */
+            overflow: hidden;
+            white-space: normal;
+        }
+
+        #hotel-description-short::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1.5em;
+            /* Chiều cao của một dòng */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        }
+
+        .amenity-img {
+            width: 30px;
+            /* Thay đổi kích thước ảnh theo ý muốn */
+            height: auto;
+            /* Giữ tỷ lệ ảnh đúng */
+            margin-bottom: 10px;
+            /* Khoảng cách giữa ảnh và tên */
+        }

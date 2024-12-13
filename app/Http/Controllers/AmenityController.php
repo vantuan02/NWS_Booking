@@ -54,7 +54,7 @@ class AmenityController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('amenities.index')->with('success', 'Đã tạo thành công.');
+        return redirect()->route('admin.amenities.index')->with('success', 'Đã tạo thành công.');
     }
 
     /**
@@ -84,7 +84,7 @@ class AmenityController extends Controller
     {
         $amenity = $this->amenityRepository->findOrFail($id);
         if (!$amenity) {
-            return redirect()->route('amenities.index')->with('error', 'Tiện ích không tồn tại.');
+            return redirect()->route('admin.amenities.index')->with('error', 'Tiện ích không tồn tại.');
         }
 
         $imagePath = $amenity->image; 
@@ -109,7 +109,7 @@ class AmenityController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('amenities.index')->with('success', 'Cập nhật thành công.');
+        return redirect()->route('admin.amenities.index')->with('success', 'Cập nhật thành công.');
     }
 
     /**

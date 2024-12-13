@@ -53,7 +53,7 @@ class ViewController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('views.index')->with('success', 'Đã tạo thành công.');
+        return redirect()->route('admin.views.index')->with('success', 'Đã tạo thành công.');
     }
 
     /**
@@ -80,7 +80,7 @@ class ViewController extends Controller
     {
         $view = $this->viewRepository->findOrFail($id);
         if (!$view) {
-            return redirect()->route('views.index')->with('error', 'View not exist.');
+            return redirect()->route('admin.views.index')->with('error', 'View not exist.');
         }
 
         $imagePath = $view->image; 
@@ -104,7 +104,7 @@ class ViewController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('views.index')->with('success', 'Updated successfully.');
+        return redirect()->route('admin.views.index')->with('success', 'Updated successfully.');
     }
 
     /**

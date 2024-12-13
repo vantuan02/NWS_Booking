@@ -40,7 +40,7 @@ class PaymentMethodController extends Controller
     {
         $this->payMethodRepository->create($request->all());
 
-        return redirect()->route('payment_methods.index');
+        return redirect()->route('admin.payment_methods.index');
     }
 
     /**
@@ -69,7 +69,7 @@ class PaymentMethodController extends Controller
         $this->payMethodRepository->findOrFail($id);
         $this->payMethodRepository->update($id,$request->all());
 
-        return redirect()->route('payment_methods.index');
+        return redirect()->route('admin.payment_methods.index');
     }
 
     /**

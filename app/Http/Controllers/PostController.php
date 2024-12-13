@@ -55,7 +55,7 @@ class PostController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Created successfully.');
+        return redirect()->route('admin.posts.index')->with('success', 'Created successfully.');
     }
 
     /**
@@ -107,7 +107,7 @@ class PostController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Updated successfully.');
+        return redirect()->route('admin.posts.index')->with('success', 'Updated successfully.');
     }
 
     /**

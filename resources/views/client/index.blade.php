@@ -4,24 +4,20 @@
         <div class="hero-banner">
             <div class="banner-content">
                 <h1>Luxury Resort</h1>
-                @foreach($rooms as $room)
                 <div class="card-container">
                     <div class="text">
-                        <h2>{{$room->name}}</h2>
-                        <p>{{number_format($room->price)}}/night</p>
+                        <h2>JBAY hotel</h2>
+                        <p>500.000.đ/night</p>
                         <div class="dots">
                             <div class="dot active"></div>
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
                     </div>
-                    @foreach($room->roomImages as $image)
                     <div class="image">
-                        <img src="{{$image->image_url}}" alt="imgae">
+                        <img src="" alt="imgae">
                     </div>
-                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </section>
@@ -41,15 +37,23 @@
                         <h3>{{ $hotel->name }}</h3>
                         <p>{{ $hotel->address }}</p>
                         <div class="price-rating">
-                            <span class="old-price"></span>
-                            <div class="new-price-container">
-                                @if ($hotel->rooms->isNotEmpty())
-                                    <span class="new-price">{{ number_format($hotel->rooms->first()->price) }}</span> VND
-                                    <span class="per-night">/room/night</span>
+                            @if ($hotel->rooms->isNotEmpty())
+                                @if ($hotel->rooms->first()->sale_price == 0)
+                                    <div class="new-price-container">
+                                        <span class="new-price">{{ number_format($hotel->rooms->first()->price) }}.đ</span>
+                                        <span class="per-night">/room/night</span>
+                                    </div>
                                 @else
-                                    <span class="new-price">Liên hệ để biết giá</span>
+                                    <del class="old-price">{{ number_format($hotel->rooms->first()->price) }}.đ</del>
+                                    <div class="new-price-container">
+                                        <span
+                                            class="new-price">{{ number_format($hotel->rooms->first()->sale_price) }}.đ</span>
+                                        <span class="per-night">/room/night</span>
+                                    </div>
                                 @endif
-                            </div>
+                            @else
+                                <span class="new-price">Liên hệ để biết giá</span>
+                            @endif
                         </div>
                         <button>Book Now <i class="bi bi-arrow-right"> </i></button>
                     </div>
